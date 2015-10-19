@@ -8,4 +8,6 @@ var reviewSchema = new Schema({
 	comment: {type: String, required: true }
 })
 
-module.exports = mongoose.model('Review', reviewSchema);
+// var Review = mongoose.model('Review', reviewSchema);
+// ​
+// module.exports = Review;
