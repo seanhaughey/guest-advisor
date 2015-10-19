@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var app = express();
+var User = require('../models/user');
+var Guest = require('../models/guest');
+var Review = require('../models/review');
 // TODO: route to authenticate a user (POST http://localhost:8080/api/authenticate)
 
 // TODO: route middleware to verify a token
@@ -17,6 +20,17 @@ router.get('/users', function(req, res) {
   });
 });   
 
+router.get('/guests', function(req, res) {
+  Guest.find({}, function(err, guests) {
+    res.json(guests);
+  });
+});
+
+router.get('/reviews', function(req, res) {
+  Review.find({}, function(err, reviews) {
+    res.json(reviews);
+  });
+});     
 // apply the routes to our application with the prefix /api
 app.use('/', router);
 module.exports = router;
