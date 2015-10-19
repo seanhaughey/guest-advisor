@@ -8,9 +8,15 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
+var api = require('./routes/api')
+var jwt = require('jsonwebtoken');
+var config = require('./config');
+var user = require('./models/user');
+var review = require('./models/review');
+var guest = require('./models/guest');
 var app = express();
-mongoose.connect(process.env.MONGO_DB_CONN_GUEST_ADVISOR);
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,6 +32,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/api', api);
+
+var port = process.env.PORT || 3000; // used to create, sign, and verify tokens
+mongoose.connect(process.env.MONGO_DB_CONN_GUEST_ADVISOR); // connect to database
+app.set('superSecret', config.secret); // secret variable
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
