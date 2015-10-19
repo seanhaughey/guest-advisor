@@ -8,17 +8,17 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-<<<<<<< HEAD
+var reviews = require('./routes/reviews');
+
 var api = require('./routes/api')
 var jwt = require('jsonwebtoken');
 var config = require('./config');
 var user = require('./models/user');
 var review = require('./models/review');
 var guest = require('./models/guest');
-=======
-var review = require('./routes/review');
 
->>>>>>> master
+
+
 var app = express();
 
 
@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-
+app.use('/reviews', reviews)
 app.use('/api', api);
 
 var port = process.env.PORT || 3000; // used to create, sign, and verify tokens
