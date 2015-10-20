@@ -11,8 +11,6 @@ var users = require('./routes/users');
 var reviews = require('./routes/reviews');
 
 var api = require('./routes/api')
-var jwt = require('jsonwebtoken');
-var config = require('./config');
 var user = require('./models/user');
 var review = require('./models/review');
 var guest = require('./models/guest');
@@ -42,9 +40,7 @@ app.use('/api', api);
 
 var port = process.env.PORT || 3000; // used to create, sign, and verify tokens
 mongoose.connect(process.env.MONGO_DB_CONN_GUEST_ADVISOR); // connect to database
-app.set('superSecret', config.secret); // secret variable
 
-app.use('/review', review);
 
 
 // catch 404 and forward to error handler
