@@ -10,4 +10,7 @@ router.get('/', function(req, res, next) {
  	res.render('login', {title: 'GuestAdvisor' });
  });
 
+router.get('/new_user', function(req, res, next) {
+ 	res.render('new_user', {title: 'GuestAdvisor' });
+ });
  module.exports = router;

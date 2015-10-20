@@ -19,11 +19,6 @@ router.get('/', function(req, res, next) {
 // 	var email = req.body.email;
 // 	var review = req.body.review;
 // 	var rating = req.body.rating;
-
-
-    res.send('Review created');
-});
-
 // 	var newGuest = Guest({
 // 	  name: name,
 // 	  email: email,
