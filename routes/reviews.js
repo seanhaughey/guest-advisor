@@ -21,8 +21,6 @@ router.get('/', function(req, res, next) {
 // 	var rating = req.body.rating;
 
 
-    res.send('Review created');
-});
 
 // 	var newGuest = Guest({
 // 	  name: name,
