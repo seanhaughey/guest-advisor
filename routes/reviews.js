@@ -15,7 +15,7 @@ router.post('/new', function(req, res, next) {
     console.log('Name: ' + req.body.name);
     console.log('Rating: ' + req.body.rating);
 
-    res.end();
+    res.send('Review created');
 });
 
 module.exports = router;

@@ -11,15 +11,34 @@ var users = require('./routes/users');
 var reviews = require('./routes/reviews');
 
 var api = require('./routes/api')
-var jwt = require('jsonwebtoken');
-var config = require('./config');
-var user = require('./models/user');
-var review = require('./models/review');
-var guest = require('./models/guest');
-
-
+var User = require('./models/user');
+var Review = require('./models/review');
+var Guest = require('./models/guest');
 
 var app = express();
+
+var passport = require('passport')
+  , LocalStrategy = require('passport-local').Strategy;
+
+passport.use(new LocalStrategy(
+    function(username, password, done) {
+      console.log('before db search')
+      User.findOne({ email: username }, function (err, user) {
+        console.log('after db search')
+        if (err) { return done(err); }
+        if (!user) {
+          console.log('user not found');
+          return done(null, false, { message: 'Incorrect username.' });
+        }
+        if (user.password !== password ) {
+          console.log('password doesnt match')
+          return done(null, false, { message: 'Incorrect password.' });
+        }
+        console.log(user);
+        return done(null, user);
+      });
+    }
+  ));
 
 
 
@@ -40,11 +59,12 @@ app.use('/users', users);
 app.use('/reviews', reviews)
 app.use('/api', api);
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 var port = process.env.PORT || 3000; // used to create, sign, and verify tokens
 mongoose.connect(process.env.MONGO_DB_CONN_GUEST_ADVISOR); // connect to database
-app.set('superSecret', config.secret); // secret variable
 
-app.use('/review', review);
 
 
 // catch 404 and forward to error handler
