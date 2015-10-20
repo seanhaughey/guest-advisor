@@ -20,8 +20,6 @@ router.get('/', function(req, res, next) {
 // 	var review = req.body.review;
 // 	var rating = req.body.rating;
 
-
-
 // 	var newGuest = Guest({
 // 	  name: name,
 // 	  email: email,
