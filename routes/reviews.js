@@ -14,8 +14,7 @@ router.get('/new', function(req, res, next) {
 });
 
 router.post('/new', function(req, res, next) {
-	var name = req.body.name;
-	var email = req.body.email;
+	
 	var review = req.body.review;
 	var rating = req.body.rating;
 	var user = {user: req.user}
