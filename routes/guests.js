@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var app = express();
 
 
-router.get('/', function(req, res, next) {
+router.get('/:id', function(req, res, next) {
   res.render('guest', { user : req.user });
 });
 
