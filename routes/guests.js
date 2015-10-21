@@ -1,8 +1,44 @@
- // User = mongoose.model('Guest'); // Declare a new mongoose User
 var express = require('express');
 var router = express.Router();
 var Guest = require('../models/guest');
+var mongoose = require('mongoose');
 var app = express();
+
+
+router.get('/', function(req, res, next) {
+  res.render('guest', { user : req.user });
+});
+
+
+// router.get('/new', function(req, res, next) {
+//   res.render('guest', { user: req.user });
+// });
+
+router.post('/new', function(req, res, next) {
+   console.log(req.body)
+   console.log('Name: ' + req.body.name);
+   console.log('Rating: ' + req.body.rating);
+   var name = req.body.name;
+   var email = req.body.email;
+   var review = req.body.review;
+   var rating = req.body.rating;
+
+   var newGuest = Guest({
+     name: name,
+     email: email,
+     reviews: review,
+     rating: rating
+   });
+
+   newGuest.save(function(err) {
+     if (err) console.log(err);
+
+     res.send('New guest created!');
+    });
+
+
+});
+>>>>>>> master
 
 
 
@@ -29,6 +65,7 @@ app.get('/api/guests', function(req, res) {
       }
    });
 });
+<<<<<<< HEAD
 
 
 router.get('/', function(req, res, next) {
@@ -59,3 +96,7 @@ router.param('id', function (req, res, next, id) {
 
 app.use('/', router);
 module.exports = app;
+=======
+module.exports = router;
+
+>>>>>>> master
