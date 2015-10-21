@@ -12,9 +12,11 @@ var reviews = require('./routes/reviews');
 var guests = require('./routes/guests');
 
 var api = require('./routes/api')
+
 var User = require('./models/user');
 var Review = require('./models/review');
 var Guest = require('./models/guest');
+
 
 var app = express();
 
@@ -48,10 +50,8 @@ app.use(passport.session());
 app.use('/', routes);
 app.use('/users', users);
 app.use('/reviews', reviews);
-app.use('/guests', guests);
 app.use('/api', api);
-
-
+app.use('/guests', guests);
 
 var port = process.env.PORT || 3000; // used to create, sign, and verify tokens
 mongoose.connect(process.env.MONGO_DB_CONN_GUEST_ADVISOR); // connect to database
@@ -86,6 +86,11 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+
+
+
+
 
 
 module.exports = app;
