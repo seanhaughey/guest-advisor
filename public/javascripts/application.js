@@ -4,16 +4,19 @@ $(function () {
       source: function (request, response) {
          $.ajax({
             url: "/api/guests",
-            type: "GET",
-            data: request,  // request is the value of search input
+            method: "GET",
+            dataType: "json",
+            data: request,
+              // request is the value of search input
             success: function (data) {
               // Map response values to fiedl label and value
                response($.map(data, function (el) {
                   return {
                      label: el.email,
                      // label: el.last_name,
-                     value: el.full_name, 
-                     // value: el.last_name
+                     // value: el.first_name,
+                     value: el._id, 
+                    
                   };
                   }));
                }
@@ -32,10 +35,14 @@ $(function () {
          select: function (event, ui) {
             // Prevent value from being put in the input:
             this.value = ui.item.label;
+
             // Set the id to the next input hidden field
             $(this).next("input").val(ui.item.value); 
             // Prevent other event from not being execute            
+             window.location.href = "/guests/"+ ui.item.value;
             event.preventDefault();
+
+
             // optionnal: submit the form after field has been filled up
             $('#submitit').submit();
          }

@@ -1,11 +1,18 @@
-User = mongoose.model('Guest'); // Declare a new mongoose User
+ // User = mongoose.model('Guest'); // Declare a new mongoose User
+var express = require('express');
+var router = express.Router();
+var Guest = require('../models/guest');
+var app = express();
 
-app.get('/search_guest', function(req, res) {
-   var last_name= last_name;
+
+
+
+app.get('/api/guests', function(req, res) {
+   var last_name=  last_name;
    var first_name= first_name;
    var full_name = first_name + last_name;
    var regex = new RegExp(req.query["term"], 'i');
-   var query = User.find({email: regex}, { 'email': 1 }).sort({"updated_at":-1}).sort({"created_at":-1}).limit(01);
+   var query = Guest.find({email: regex}, { 'email': 1 }).sort({"updated_at":-1}).sort({"created_at":-1}).limit(01);
         
       // Execute query in a callback and return users list
   query.exec(function(err, guests) {
@@ -22,3 +29,33 @@ app.get('/search_guest', function(req, res) {
       }
    });
 });
+
+
+router.get('/', function(req, res, next) {
+  res.send('hey look guest page');
+});
+
+router.get('/:id', function(req, res, next) {
+   Guest.findOne({ _id:req.params.id }, " ", function(err, guests) {
+  if (err) console.log(err);
+
+  // user.name
+  // user.email
+  // user.favorite 
+res.render('guest', {
+        title: "Guest Page"
+    });
+console.log(guests);
+});
+  
+});
+
+router.param('id', function (req, res, next, id) {
+  console.log('CALLED ONLY ONCE');
+  next();
+})
+
+
+
+app.use('/', router);
+module.exports = app;
