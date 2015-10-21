@@ -52,44 +52,29 @@ $(function () {
    // }
 
    function updateContent() {
-      
+      var updateCheck = 100000;
+      var rightNow = Date.now();
+      var updateSince = rightNow - updateCheck; 
+
       $.ajax ({
          type: "GET",
          url: "/api/guests",
          dataType: "json",
          data: { 
-               
+            updateSince: updateSince
           },
          success: function(data, textStatus, jqXHR) {
             // check for duplicates
-            //console.log(data[9].name);
-            
-            var updateCheck = 3000;
-            var rightNow = Date.now();
-            var updateWindow = rightNow - updateCheck; 
-            //console.log(data[i].created_at);
-            for (var i = 0; i < Guest.length; i++)
-            if ((data[9].created_at || data[9].updated_at) > updateWindow) {
-               console.log(data.created_at);
-               console.log('new update');
+            console.log(data);
+         
+            for (var i = 0; i < data.length; i++) {
+               $('#live').prepend( "<div> Guest "+ data[i]['name'] + ", has been reviewed");
             }
-            else {
-               console.log('no new updates, yet');
-            }
-            // if(verifyGuest(data) == false){
-
-            // }
-            // else{
-            //    console.log("User already exists in database");
-            // }
-            // for (var i = 0; i < data['Search'].length; i++) {
-            //    $('#live').append( "<div>"+ data['Search'][i]['Name'] + ", " + data['Search'][i]['Email'] + ", " + data['Search'][i]['Rating'] + ", " + data['Search'][i]['Reviews' + "</div>"]);
-            // }
          }
       });
     
     
    }
-   updateContent();
+   //updateContent();
    //setInterval(updateContent, 3000);
 });

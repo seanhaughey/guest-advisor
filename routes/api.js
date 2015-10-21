@@ -21,7 +21,9 @@ router.get('/users', function(req, res) {
 });   
 
 router.get('/guests', function(req, res) {
-  Guest.find({}, function(err, guests) {
+  var since = new Date(parseInt(req.query.updateSince));
+  console.log('update', since);
+  Guest.find({reviewed_at: {$gte: since }}, function(err, guests) {
     res.json(guests);
   });
 });
