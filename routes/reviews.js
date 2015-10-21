@@ -1,41 +1,41 @@
 var express = require('express');
 var router = express.Router();
 var Review = require('../models/review');
+var Guest = require('../models/guest');
+
 
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'GuestAdvisor' });
+  res.render('index', {user: req.user});
 });
 
-// router.get('/new', function(req, res, next) {
-//   res.render('review', { title: 'GuestAdvisor' });
-// });
+router.get('/new', function(req, res, next) {
+  res.render('review', {user: req.user});
+});
 
-// router.post('/new', function(req, res, next) {
-// 	console.log(req.body)
-// 	console.log('Name: ' + req.body.name);
-// 	console.log('Rating: ' + req.body.rating);
-// 	var name = req.body.name;
-// 	var email = req.body.email;
-// 	var review = req.body.review;
-// 	var rating = req.body.rating;
+router.post('/new', function(req, res, next) {
+	var name = req.body.name;
+	var email = req.body.email;
+	var review = req.body.review;
+	var rating = req.body.rating;
+	var user = {user: req.user}
+	var user_id = user.id
+	var guest = Guest.findOne({ 'email': req.body.email });
 
-// 	var newGuest = Guest({
-// 	  name: name,
-// 	  email: email,
-// 	  review: review,
-// 	  rating: rating
-// 	});
+	 
+		var newReview = Review({
+		  user_id: user_id,
+		  guest_id: guest.id,
+		  review: review,
+		  rating: rating
+		});
 
-//    newGuest.save(function(err) {
-//      if (err) console.log(err);
+	   newReview.save(function(err) {
+	     if (err) console.log(err);
 
-//      res.send('New guest created!');
-//     });
-
-
-//     // res.end();
-// });
+	     res.redirect('/');
+	    });
+});
 
 
 module.exports = router;

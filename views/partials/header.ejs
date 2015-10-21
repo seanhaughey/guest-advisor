@@ -34,8 +34,9 @@
           <div class="col-md-4 col-sm-4 col-xs-4">
             <ul class="nav navbar-nav navbar-right">
               <% if (user) { %>
-              <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
               <li><a href='/'><span class="glyphicon glyphicon-home"></span> Home</a></li>
+              <li><a href='/reviews/new'><span class="glyphicon glyphicon-pencil"></span> Write a Review</a></li>
+              <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
               <% } else { %>
                 <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 <li><a href="/new_user"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
