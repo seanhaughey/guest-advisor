@@ -1,5 +1,6 @@
 $(function () {
 
+
   $("#search-term").autocomplete({
       source: function (request, response) {
          $.ajax({
@@ -62,11 +63,14 @@ $(function () {
          success: function(data, textStatus, jqXHR) {
             // check for duplicates
             //console.log(data[9].name);
+            
             var updateCheck = 3000;
             var rightNow = Date.now();
             var updateWindow = rightNow - updateCheck; 
-            
-            if ((data.created_at || data.updated_at) > updateWindow) {
+            //console.log(data[i].created_at);
+            for (var i = 0; i < Guest.length; i++)
+            if ((data[9].created_at || data[9].updated_at) > updateWindow) {
+               console.log(data.created_at);
                console.log('new update');
             }
             else {
@@ -86,6 +90,6 @@ $(function () {
     
     
    }
-   //updateContent();
-   setInterval(updateContent, 3000);
+   updateContent();
+   //setInterval(updateContent, 3000);
 });

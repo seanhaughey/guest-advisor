@@ -12,7 +12,7 @@ var reviews = require('./routes/reviews');
 var guests = require('./routes/guests');
 
 var api = require('./routes/api')
-var jwt = require('jsonwebtoken');
+//var jwt = require('jsonwebtoken');
 var config = require('./config');
 var user = require('./models/user');
 var review = require('./models/review');
