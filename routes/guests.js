@@ -78,7 +78,8 @@ router.get('/:id', function(req, res, next) {
   // user.email
   // user.favorite 
 res.render('guest', {
-        title: "Guest Page"
+        title: "Guest Page",
+        guest: guests,
     });
 console.log(guests);
 });

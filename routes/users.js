@@ -8,7 +8,13 @@ var bcrypt = require('bcrypt');
 var LocalStrategy = require('passport-local').Strategy;
 	
 	router.get('/', function(req, res, next) {
-		res.render('user', { user : req.user });
+		var user = req.user
+		if (user) {
+			res.render('user', { user : req.user });
+		}
+		else {
+			res.redirect('/login');
+		}
 	});
 
 	router.get('/logout', function(req, res) {
