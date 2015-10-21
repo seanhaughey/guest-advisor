@@ -6,7 +6,7 @@ var app = express();
 
 
 router.get('/', function(req, res, next) {
-  res.render('guest', { user : req.user });
+  res.render('guest', { guest : req.guest });
 });
 
 
@@ -14,26 +14,23 @@ router.get('/', function(req, res, next) {
 //   res.render('guest', { user: req.user });
 // });
 
-router.post('/new', function(req, res, next) {
+router.post('/', function(req, res, next) {
    console.log(req.body)
    console.log('Name: ' + req.body.name);
-   console.log('Rating: ' + req.body.rating);
    var name = req.body.name;
    var email = req.body.email;
-   var review = req.body.review;
-   var rating = req.body.rating;
+   // var review = req.body.review;
+   // var rating = req.body.rating;
 
    var newGuest = Guest({
      name: name,
-     email: email,
-     reviews: review,
-     rating: rating
+     email: email
    });
 
    newGuest.save(function(err) {
      if (err) console.log(err);
 
-     res.send('New guest created!');
+     res.render('guest', { user : req.user });
     });
 
 
