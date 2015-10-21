@@ -1,12 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var Guest = require('../models/guest');
+var Review = require('../models/review');
 var mongoose = require('mongoose');
 var app = express();
 
 
 router.get('/', function(req, res, next) {
-  res.render('guest', { guest : req.guest });
+  res.render('guest', { user : req.user });
 });
 
 
@@ -15,19 +16,20 @@ router.get('/', function(req, res, next) {
 // });
 
 router.post('/', function(req, res, next) {
-   console.log(req.body)
-   console.log('Name: ' + req.body.name);
-   var name = req.body.name;
-   var email = req.body.email;
-   // var review = req.body.review;
-   // var rating = req.body.rating;
-
-   var newGuest = Guest({
-     name: name,
-     email: email
+   console.log('Review: ' + req.body.review);
+   console.log('Rating: ' + req.body.rating);
+   // var name = req.body.name;
+   // var email = req.body.email;
+   var review = req.body.review;
+   var rating = req.body.rating;
+   var user = req.user;
+   var newReview = Review({
+     comment: review,
+     ind_rating: rating,
+     user_ID: user.id,
    });
 
-   newGuest.save(function(err) {
+   newReview.save(function(err) {
      if (err) console.log(err);
 
      res.render('guest', { user : req.user });
