@@ -6,13 +6,13 @@ var app = express();
 
 
 router.get('/', function(req, res, next) {
-  res.render('index', { user : req.user });
+  res.render('guest', { user : req.user });
 });
 
 
-router.get('/new', function(req, res, next) {
-  res.render('guest', { user: req.user });
-});
+// router.get('/new', function(req, res, next) {
+//   res.render('guest', { user: req.user });
+// });
 
 router.post('/new', function(req, res, next) {
    console.log(req.body)

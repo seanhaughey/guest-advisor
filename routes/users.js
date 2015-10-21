@@ -8,11 +8,7 @@ var bcrypt = require('bcrypt');
 var LocalStrategy = require('passport-local').Strategy;
 	
 	router.get('/', function(req, res, next) {
-	  res.send('respond with a resource');
-	});
-
-	router.post('/authenticate', passport.authenticate('local'), function(req, res) {
-	    res.redirect('/');
+		res.render('user', { user : req.user });
 	});
 
 	router.get('/logout', function(req, res) {

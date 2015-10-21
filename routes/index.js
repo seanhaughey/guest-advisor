@@ -39,7 +39,8 @@ router.post('/new', function(req, res) {
 
 // Authenticate the existing user and redirect to index
 router.post('/authenticate', passport.authenticate('local'), function(req, res) {
-    res.redirect('/');
+    var user = req.user;
+    res.redirect('/users/?=' + user.id);
 });
 
 // Log out the current user and redirect to index
