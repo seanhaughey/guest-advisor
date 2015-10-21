@@ -38,7 +38,6 @@ router.post('/new', function(req, res, next) {
 
 
 });
->>>>>>> master
 
 
 
@@ -65,7 +64,6 @@ app.get('/api/guests', function(req, res) {
       }
    });
 });
-<<<<<<< HEAD
 
 
 router.get('/', function(req, res, next) {
@@ -95,8 +93,6 @@ router.param('id', function (req, res, next, id) {
 
 
 app.use('/', router);
-module.exports = app;
-=======
+// module.exports = app;
 module.exports = router;
 
->>>>>>> master
