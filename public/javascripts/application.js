@@ -40,5 +40,52 @@ $(function () {
             $('#submitit').submit();
          }
   });
+   
 
+   //} //see if created, if not create on submit with date to Guest Reviews [] 
+     //if so, update on submit with date to Guests Reviews []
+     //prepend any creation or update that has been made in the last 3 sec
+   // function saveTime() {
+   //    $('#submitit').submit()
+
+   // }
+
+   function updateContent() {
+      
+      $.ajax ({
+         type: "GET",
+         url: "/api/guests",
+         dataType: "json",
+         data: { 
+               
+          },
+         success: function(data, textStatus, jqXHR) {
+            // check for duplicates
+            //console.log(data[9].name);
+            var updateCheck = 3000;
+            var rightNow = Date.now();
+            var updateWindow = rightNow - updateCheck; 
+            
+            if ((data.created_at || data.updated_at) > updateWindow) {
+               console.log('new update');
+            }
+            else {
+               console.log('no new updates, yet');
+            }
+            // if(verifyGuest(data) == false){
+
+            // }
+            // else{
+            //    console.log("User already exists in database");
+            // }
+            // for (var i = 0; i < data['Search'].length; i++) {
+            //    $('#live').append( "<div>"+ data['Search'][i]['Name'] + ", " + data['Search'][i]['Email'] + ", " + data['Search'][i]['Rating'] + ", " + data['Search'][i]['Reviews' + "</div>"]);
+            // }
+         }
+      });
+    
+    
+   }
+   //updateContent();
+   setInterval(updateContent, 3000);
 });
