@@ -5,7 +5,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var bcrypt = require('bcrypt');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var reviews = require('./routes/reviews');
@@ -18,30 +18,33 @@ var Guest = require('./models/guest');
 
 var app = express();
 
-var passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy;
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
-passport.use(new LocalStrategy(
-    function(username, password, done) {
-      console.log('before db search')
-      User.findOne({ email: username }, function (err, user) {
-        console.log('after db search')
-        if (err) { return done(err); }
-        if (!user) {
-          console.log('user not found');
-          return done(null, false, { message: 'Incorrect username.' });
-        }
-        if (user.password !== password ) {
-          console.log('password doesnt match')
-          return done(null, false, { message: 'Incorrect password.' });
-        }
-        console.log(user);
-        return done(null, user);
-      });
-    }
-  ));
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
+// passport.use(new LocalStrategy(
+//   function(username, password, done) {
+//     console.log('before db search')
+//     User.findOne({ email: username }, function (err, user) {
+//       console.log('after db search')
+//       if (err) { return done(err); }
+//       if (!user) {
+//         console.log('user not found');
+//         return done(null, false, { message: 'Incorrect username.' });
+//       }
+//       if (!bcrypt.compareSync(password, user.password)) {
+//         console.log('password doesnt match')
+//         return done(null, false, { message: 'Incorrect password.' });
+//       }
+//       console.log(user);
+//       return done(null, user);
+//     });
+//   }
+// ));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -53,7 +56,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(require('express-session')({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', routes);
 app.use('/users', users);
@@ -61,8 +71,7 @@ app.use('/reviews', reviews);
 app.use('/guests', guests);
 app.use('/api', api);
 
-app.use(passport.initialize());
-app.use(passport.session());
+
 
 var port = process.env.PORT || 3000; // used to create, sign, and verify tokens
 mongoose.connect(process.env.MONGO_DB_CONN_GUEST_ADVISOR); // connect to database
