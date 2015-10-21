@@ -7,12 +7,12 @@ var app = express();
 
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'GuestAdvisor' });
+  res.render('index', { user : req.user });
 });
 
 
 router.get('/new', function(req, res, next) {
-  res.render('guest', { title: 'GuestAdvisor' });
+  res.render('guest', { user: req.user });
 });
 
 router.post('/new', function(req, res, next) {
