@@ -5,7 +5,6 @@ var mongoose = require('mongoose');
 var app = express();
 
 
-
 router.get('/', function(req, res, next) {
   res.render('index', { user : req.user });
 });
@@ -39,8 +38,6 @@ router.post('/new', function(req, res, next) {
 
 
 });
-
-User = mongoose.model('Guest'); // Declare a new mongoose User
 
 app.get('/search_guest', function(req, res) {
    var last_name= last_name;

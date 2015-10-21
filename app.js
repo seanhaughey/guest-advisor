@@ -25,27 +25,6 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
-// passport.use(new LocalStrategy(
-//   function(username, password, done) {
-//     console.log('before db search')
-//     User.findOne({ email: username }, function (err, user) {
-//       console.log('after db search')
-//       if (err) { return done(err); }
-//       if (!user) {
-//         console.log('user not found');
-//         return done(null, false, { message: 'Incorrect username.' });
-//       }
-//       if (!bcrypt.compareSync(password, user.password)) {
-//         console.log('password doesnt match')
-//         return done(null, false, { message: 'Incorrect password.' });
-//       }
-//       console.log(user);
-//       return done(null, user);
-//     });
-//   }
-// ));
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -75,12 +54,6 @@ app.use('/api', api);
 
 var port = process.env.PORT || 3000; // used to create, sign, and verify tokens
 mongoose.connect(process.env.MONGO_DB_CONN_GUEST_ADVISOR); // connect to database
-
-
-// app.use('/review', review);
-// app.use('/guest', guest);
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
