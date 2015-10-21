@@ -4,6 +4,7 @@ var Guest = require('../models/guest');
 var mongoose = require('mongoose');
 var app = express();
 
+
 router.get('/', function(req, res, next) {
   res.render('index', { user : req.user });
 });

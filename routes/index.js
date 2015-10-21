@@ -27,25 +27,23 @@ router.post('/new', function(req, res) {
         if (err) {
         	console.log(err.errors);
         	throw err;
-            // return res.render('register', { user : user });
         }
-
         // Authenticate the new user and redirect to index
         passport.authenticate('local')(req, res, function () {
-            res.redirect('/');
+            res.redirect('/users');
         });
     });
 });
 
 // Authenticate the existing user and redirect to index
 router.post('/authenticate', passport.authenticate('local'), function(req, res) {
-    res.redirect('/');
+    res.redirect('/users');
 });
 
 // Log out the current user and redirect to index
 router.get('/logout', function(req, res) {
     req.logout();
-    res.redirect('/new_user');
+    res.redirect('/');
 });
 
  module.exports = router;

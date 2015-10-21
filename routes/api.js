@@ -4,6 +4,7 @@ var app = express();
 var User = require('../models/user');
 var Guest = require('../models/guest');
 var Review = require('../models/review');
+
 // TODO: route to authenticate a user (POST http://localhost:8080/api/authenticate)
 
 // TODO: route middleware to verify a token

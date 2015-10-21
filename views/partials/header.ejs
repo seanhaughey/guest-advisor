@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
 
-    <link rel='stylesheet' href='../public/stylesheets/style.css'></link>
+    <link rel='stylesheet' href='/stylesheets/style.css'></link>
 
   </head>
   <body>
@@ -35,7 +35,6 @@
             <ul class="nav navbar-nav navbar-right">
               <% if (user) { %>
               <li><a href='/'><span class="glyphicon glyphicon-home"></span> Home</a></li>
-              <li><a href='/reviews/new'><span class="glyphicon glyphicon-pencil"></span> Write a Review</a></li>
               <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
               <% } else { %>
                 <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
