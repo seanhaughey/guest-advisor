@@ -22,8 +22,16 @@ router.get('/users', function(req, res) {
 });   
 
 router.get('/guests', function(req, res) {
-  Guest.find({}, function(err, guests) {
+  console.log(req.query.term.term);
+  Guest.find({email: new RegExp(req.query.term.term, "i")}, function(err, guests) {
+    
+  console.log(guests);
+  if(err){
+  console.log(err);
+ }
     res.json(guests);
+
+   
   });
 });
 
