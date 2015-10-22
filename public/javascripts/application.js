@@ -58,7 +58,7 @@ $(function () {
 
       $.ajax ({
          type: "GET",
-         url: "/api/guests",
+         url: "/api/reviews",
          dataType: "json",
          data: { 
             updateSince: updateSince
@@ -68,7 +68,7 @@ $(function () {
             console.log(data);
          
             for (var i = 0; i < data.length; i++) {
-               $('#live').prepend( "<div> Guest "+ data[i]['name'] + ", has been reviewed");
+               $('#live').prepend( "<div> Guest "+ 'you did it' + ", has been reviewed");
             }
          }
       });
@@ -76,5 +76,5 @@ $(function () {
     
    }
    //updateContent();
-   //setInterval(updateContent, 3000);
+   setInterval(updateContent, 3000);
 });
