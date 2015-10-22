@@ -25,7 +25,7 @@
          <fieldset>
             <textarea id="guest_id" name="guest_id" style="display:none;" value="<%= guest.id %>"></textarea>
             
-            <label for="review">Review <%=guest.name%>:</label></br>
+            <label id="guest_name" for="review">Review <%=guest.name%>:</label></br>
             <input type="hidden" name="guest_name" value="<%=guest.name%>">
 
             <textarea id="review" name="review" placeholder="Enter your guest review here"></textarea>

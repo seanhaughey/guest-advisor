@@ -1,5 +1,7 @@
 <% include ./partials/header %>
 
+    <div class="panel panel-default col-md-3 col-sm-3 col-xs-3" id="login">
+      <h3 id="login_here">Login Here:</h3>
       <form style="text-align: center" action="/authenticate" method="post">
          <fieldset>
             <label for="email">Email:</label>
@@ -13,5 +15,6 @@
             <input type="submit" value="Login" />
          </fieldset>
       </form>
+   </div>
 
 <% include ./partials/footer %>  
