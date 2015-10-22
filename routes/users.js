@@ -3,6 +3,7 @@ var router = express.Router();
 var app = express();
 var User = require('../models/user');
 var Guest = require('../models/guest');
+var Review = require('../models/review')
 var mongoose = require('mongoose');
 var passport = require('passport');
 var bcrypt = require('bcrypt');
@@ -23,8 +24,7 @@ var LocalStrategy = require('passport-local').Strategy;
 
 			if (guest){
 				console.log("if statement");
-				res.redirect('/guests/' + guest.id),{ user : req.user };
-
+				res.redirect('/guests/' + guest.id);
 			}
 
 			else {
@@ -40,12 +40,11 @@ var LocalStrategy = require('passport-local').Strategy;
 					if(err) console.log(err);
 
 						console.log("else statement");
-						res.redirect('/guests/' + guest.id),{ user : req.user };
+						res.redirect('/guests/' + guest.id);
 
 					});
 
 				});
-				// res.redirect('/guests' + guest.id);
 			}
 
 		});

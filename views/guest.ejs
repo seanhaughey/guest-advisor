@@ -1,6 +1,6 @@
 <% include ./partials/header %>
 
-      <form style="text-align: center" action="/guests" method="post">
+      <form style="text-align: center" action="/guests/<%= guestID  %>" method="post">
          <fieldset>
             <label for="review">Review:</label></br>
             <textarea id="review" name="review" placeholder="Enter your guest review here"></textarea>
