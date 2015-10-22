@@ -40,11 +40,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use(require('express-session')({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: false
-}));
+// app.use(require('express-session')({
+//     secret: 'keyboard cat',
+//     resave: false,
+//     saveUninitialized: false
+// }));
 app.use(passport.initialize());
 app.use(passport.session());
 
