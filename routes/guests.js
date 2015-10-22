@@ -7,7 +7,15 @@ var app = express();
 
 
 router.get('/:id', function(req, res, next) {
-  res.render('guest', { user : req.user });
+  Guest.findOne({ _id:req.params.id }, " ", function(err, guests) {
+    if (err) console.log(err);
+    res.render('guest', {
+      title: "Guest Page",
+      guest: guests,
+      user: req.user,
+      // guest: guest.id
+      });
+    });
 });
 
 
@@ -16,23 +24,25 @@ router.get('/:id', function(req, res, next) {
 // });
 
 router.post('/', function(req, res, next) {
-   console.log('Review: ' + req.body.review);
-   console.log('Rating: ' + req.body.rating);
-   // var name = req.body.name;
-   // var email = req.body.email;
    var review = req.body.review;
    var rating = req.body.rating;
+   var guest_id = req.body.guest_id;
    var user = req.user;
+
+   console.log('Review: ' + req.body.review);
+   console.log('Rating: ' + req.body.rating);
+   console.log(guest_id);
    var newReview = Review({
      comment: review,
      ind_rating: rating,
-     user_ID: user.id,
+     // user_ID: user.id,
+     guest_id: guest_id
    });
 
    newReview.save(function(err) {
      if (err) console.log(err);
 
-     res.render('guest', { user : req.user });
+     res.redirect('/users'),{ user : req.user };
     });
 
 
@@ -63,33 +73,6 @@ app.get('/api/guests', function(req, res) {
       }
    });
 });
-
-
-router.get('/', function(req, res, next) {
-  res.send('hey look guest page');
-});
-
-router.get('/:id', function(req, res, next) {
-   Guest.findOne({ _id:req.params.id }, " ", function(err, guests) {
-  if (err) console.log(err);
-
-  // user.name
-  // user.email
-  // user.favorite 
-res.render('guest', {
-        title: "Guest Page"
-    });
-console.log(guests);
-});
-  
-});
-
-router.param('id', function (req, res, next, id) {
-  console.log('CALLED ONLY ONCE');
-  next();
-})
-
-
 
 app.use('/', router);
 // module.exports = app;

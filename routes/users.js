@@ -9,7 +9,13 @@ var bcrypt = require('bcrypt');
 var LocalStrategy = require('passport-local').Strategy;
 	
 	router.get('/', function(req, res, next) {
-		res.render('user', { user : req.user });
+		var user = req.user
+		if (user) {
+			res.render('user', { user : req.user });
+		}
+		else {
+			res.redirect('/login');
+		}
 	});
 
 	router.post('/', function(req, res, next){
@@ -36,22 +42,13 @@ var LocalStrategy = require('passport-local').Strategy;
 				newGuest.save(function(err) {
 				if (err) console.log(err);
 					Guest.findOne({email: email}, " ", function(err, guest){
-
-					if(err) console.log(err);
-
-						console.log("else statement");
-						res.redirect('/guests/' + guest.id),{ user : req.user };
-
+						if(err) console.log(err);
+							console.log("else statement");
+							res.redirect('/guests/' + guest.id),{ user : req.user };
 					});
-
 				});
-				// res.redirect('/guests' + guest.id);
 			}
-
 		});
-		// var review = req.body.review;
-		// var rating = req.body.rating;
-
 	});
 
 	router.get('/logout', function(req, res) {
