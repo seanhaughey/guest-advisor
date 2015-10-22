@@ -54,7 +54,7 @@ app.use('/reviews', reviews);
 app.use('/api', api);
 app.use('/guests', guests);
 
-var port = process.env.PORT || 3000; // used to create, sign, and verify tokens
+// var port = process.env.PORT || 3000; // used to create, sign, and verify tokens
 mongoose.connect(process.env.MONGO_DB_CONN_GUEST_ADVISOR); // connect to database
 
 // catch 404 and forward to error handler
