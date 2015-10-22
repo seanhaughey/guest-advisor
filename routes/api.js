@@ -8,6 +8,7 @@ var Review = require('../models/review');
 
 // TODO: route middleware to verify a token
 
+
 // route to show a random message (GET http://localhost:8080/api/)
 router.get('/', function(req, res) {
   res.json({ message: 'Welcome to the coolest API on earth!' });

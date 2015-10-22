@@ -1,53 +1,52 @@
 var express = require('express');
 var router = express.Router();
 var Guest = require('../models/guest');
+var Review = require('../models/review');
 var mongoose = require('mongoose');
 var app = express();
 
 
-
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'GuestAdvisor' });
+router.get('/:id', function(req, res, next) {
+  res.render('guest', { user : req.user });
 });
 
 
-router.get('/new', function(req, res, next) {
-  res.render('guest', { title: 'GuestAdvisor' });
-});
+// router.get('/new', function(req, res, next) {
+//   res.render('guest', { user: req.user });
+// });
 
-router.post('/new', function(req, res, next) {
-   console.log(req.body)
-   console.log('Name: ' + req.body.name);
+router.post('/', function(req, res, next) {
+   console.log('Review: ' + req.body.review);
    console.log('Rating: ' + req.body.rating);
-   var name = req.body.name;
-   var email = req.body.email;
+   // var name = req.body.name;
+   // var email = req.body.email;
    var review = req.body.review;
    var rating = req.body.rating;
-
-   var newGuest = Guest({
-     name: name,
-     email: email,
-     reviews: review,
-     rating: rating
+   var user = req.user;
+   var newReview = Review({
+     comment: review,
+     ind_rating: rating,
+     user_ID: user.id,
    });
 
-   newGuest.save(function(err) {
+   newReview.save(function(err) {
      if (err) console.log(err);
 
-     res.send('New guest created!');
+     res.render('guest', { user : req.user });
     });
 
 
 });
 
-User = mongoose.model('Guest'); // Declare a new mongoose User
 
-app.get('/search_guest', function(req, res) {
-   var last_name= last_name;
+
+
+app.get('/api/guests', function(req, res) {
+   var last_name=  last_name;
    var first_name= first_name;
    var full_name = first_name + last_name;
    var regex = new RegExp(req.query["term"], 'i');
-   var query = User.find({email: regex}, { 'email': 1 }).sort({"updated_at":-1}).sort({"created_at":-1}).limit(01);
+   var query = Guest.find({email: regex}, { 'email': 1 }).sort({"updated_at":-1}).sort({"created_at":-1}).limit(01);
         
       // Execute query in a callback and return users list
   query.exec(function(err, guests) {
@@ -64,5 +63,35 @@ app.get('/search_guest', function(req, res) {
       }
    });
 });
+
+
+router.get('/', function(req, res, next) {
+  res.send('hey look guest page');
+});
+
+router.get('/:id', function(req, res, next) {
+   Guest.findOne({ _id:req.params.id }, " ", function(err, guests) {
+  if (err) console.log(err);
+
+  // user.name
+  // user.email
+  // user.favorite 
+res.render('guest', {
+        title: "Guest Page"
+    });
+console.log(guests);
+});
+  
+});
+
+router.param('id', function (req, res, next, id) {
+  console.log('CALLED ONLY ONCE');
+  next();
+})
+
+
+
+app.use('/', router);
+// module.exports = app;
 module.exports = router;
 

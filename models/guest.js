@@ -4,12 +4,8 @@ var Schema = mongoose.Schema;
 var guestSchema = new Schema({
 	name: { type: String, required: true },
 	email: { type: String, required: true, unique: true },
-	reviews: { type: Array, required: true },
-	rating: { type: Number, required: true },
-	created_at: { type: Date },
-	updated_at: { type: Date }, 
-	reviewed_at: { type: Date },
 	rev_count: Number
+
 })
 
 guestSchema.pre('save', function (next){
