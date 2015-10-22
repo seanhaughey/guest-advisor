@@ -46,7 +46,7 @@ app.use(cookieParser());
 //     saveUninitialized: false
 // }));
 app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.session());
 
 app.use('/', routes);
 app.use('/users', users);
