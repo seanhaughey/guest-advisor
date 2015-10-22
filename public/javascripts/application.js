@@ -56,19 +56,17 @@ $(function () {
       var rightNow = Date.now();
       var updateSince = rightNow - updateCheck; 
 
-      $.ajax ({
+        $.ajax ({
          type: "GET",
-         url: "/api/reviews",
+         url: "/api/reviews/",
          dataType: "json",
          data: { 
             updateSince: updateSince
           },
          success: function(data, textStatus, jqXHR) {
             // check for duplicates
-            console.log(data);
-         
             for (var i = 0; i < data.length; i++) {
-               $('#live').prepend( "<li> Guest "+ 'you did it' + ", has been reviewed</li>");
+               $('#live').html( "<li>" + data[i]['guestName'] + ' was reviewed by ' + data[i]['userName'] + "</li>");
             }
          }
       });
@@ -76,5 +74,5 @@ $(function () {
     
    }
    //updateContent();
-   setInterval(updateContent, 3000);
+   setInterval(updateContent, 5000);
 });
