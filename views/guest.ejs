@@ -1,8 +1,30 @@
 <% include ./partials/header %>
 
-      <form style="text-align: center" action="/guests" method="post">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 style="text-align: center" class="panel-title"><%= guest.name %>'s Recent Reviews</h2>
+          </div>
+          <div class="panel-body">
+            <ul style="text-align: center; list-style: none">
+              <li>stuff</li>
+              <li>stuff</li>
+              <li>stuff</li>
+              <li>stuff</li>
+              <li>stuff</li>
+              <li>stuff</li>
+              <li>stuff</li>
+              <li>stuff</li>
+              <li>stuff</li>
+              <li>stuff</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <div class="col-md-4 col-sm-4 col-xs-4">
+      <form style="text-align: center" action="/guests/<%= guestID  %>" method="post">
          <fieldset>
-            <label for="review">Review:</label></br>
+            <textarea id="guest_id" name="guest_id" style="display:none;" value="<%= guest.id %>"></textarea>
+            <label for="review">Review <%=guest.name%>:</label></br>
             <textarea id="review" name="review" placeholder="Enter your guest review here"></textarea>
             <br />
             <label for="rating">Guest Rating:</label>

@@ -3,13 +3,20 @@ var router = express.Router();
 var app = express();
 var User = require('../models/user');
 var Guest = require('../models/guest');
+var Review = require('../models/review')
 var mongoose = require('mongoose');
 var passport = require('passport');
 var bcrypt = require('bcrypt');
 var LocalStrategy = require('passport-local').Strategy;
 	
 	router.get('/', function(req, res, next) {
-		res.render('user', { user : req.user });
+		var user = req.user
+		if (user) {
+			res.render('user', { user : req.user });
+		}
+		else {
+			res.redirect('/login');
+		}
 	});
 
 	router.post('/', function(req, res, next){
@@ -23,8 +30,7 @@ var LocalStrategy = require('passport-local').Strategy;
 
 			if (guest){
 				console.log("if statement");
-				res.redirect('/guests/' + guest.id),{ user : req.user };
-
+				res.redirect('/guests/' + guest.id);
 			}
 
 			else {
@@ -40,18 +46,12 @@ var LocalStrategy = require('passport-local').Strategy;
 					if(err) console.log(err);
 
 						console.log("else statement");
-						res.redirect('/guests/' + guest.id),{ user : req.user };
+						res.redirect('/guests/' + guest.id);
 
 					});
-
 				});
-				// res.redirect('/guests' + guest.id);
 			}
-
 		});
-		// var review = req.body.review;
-		// var rating = req.body.rating;
-
 	});
 
 	router.get('/logout', function(req, res) {
