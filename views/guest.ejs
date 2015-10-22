@@ -24,7 +24,7 @@
       <form style="text-align: center" action="/guests/<%= guestID  %>" method="post">
          <fieldset>
             <textarea id="guest_id" name="guest_id" style="display:none;" value="<%= guest.id %>"></textarea>
-            <label for="review">Review <%=guest.name%>:</label></br>
+            <label class="review_guest" for="review">Review <%=guest.name%>:</label></br>
             <textarea id="review" name="review" placeholder="Enter your guest review here"></textarea>
             <br />
             <label for="rating">Guest Rating:</label>
