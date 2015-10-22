@@ -18,7 +18,7 @@
           </div>
           <div class="navbar-brand col-md-2 col-sm-2 col-xs-2">
             <% if (user) { %>
-              <p style="color: white">Hello!</p>
+              <p style="color: white">Hello <%= user.name %>!</p>
             <% } else { %>
               <p style="color: white">Please Login</p>
             <% } %>
@@ -54,17 +54,8 @@
             <h2 style="text-align: center" class="panel-title">Live Feed</h2>
           </div>
           <div class="panel-body">
-            <ul style="text-align: center; list-style: none">
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
+            <ul id = "live" style="text-align: center; list-style: none">
+            </ul>
           </div>
         </div>
       </div>

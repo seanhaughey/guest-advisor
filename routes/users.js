@@ -42,22 +42,13 @@ var LocalStrategy = require('passport-local').Strategy;
 				newGuest.save(function(err) {
 				if (err) console.log(err);
 					Guest.findOne({email: email}, " ", function(err, guest){
-
-					if(err) console.log(err);
-
-						console.log("else statement");
-						res.redirect('/guests/' + guest.id),{ user : req.user };
-
+						if(err) console.log(err);
+							console.log("else statement");
+							res.redirect('/guests/' + guest.id),{ user : req.user };
 					});
-
 				});
-				// res.redirect('/guests' + guest.id);
 			}
-
 		});
-		// var review = req.body.review;
-		// var rating = req.body.rating;
-
 	});
 
 	router.get('/logout', function(req, res) {
