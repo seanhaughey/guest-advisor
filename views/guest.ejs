@@ -1,7 +1,7 @@
 <% include ./partials/header %>
 
-        <div class="panel panel-default">
-          <div class="panel-heading">
+        <div class="panel panel-default col-md-4" id="guest_recent">
+          <div>
             <h2 style="text-align: center" class="panel-title"><%= guest.name %>'s Recent Reviews</h2>
           </div>
           <div class="panel-body">
@@ -20,12 +20,14 @@
           </div>
         </div>
       </div>
-    <div class="col-md-4 col-sm-4 col-xs-4">
+    <div class="panel panel-default col-md-3 col-sm-3 col-xs-3" id="guest_rev">
       <form style="text-align: center" action="/guests/<%= guestID  %>" method="post">
          <fieldset>
             <textarea id="guest_id" name="guest_id" style="display:none;" value="<%= guest.id %>"></textarea>
+            
             <label for="review">Review <%=guest.name%>:</label></br>
             <input type="hidden" name="guest_name" value="<%=guest.name%>">
+
             <textarea id="review" name="review" placeholder="Enter your guest review here"></textarea>
             <br />
             <label for="rating">Guest Rating:</label>

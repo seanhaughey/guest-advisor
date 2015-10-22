@@ -1,7 +1,60 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  padding: 5px;
-  background-color: green;
+  padding: 0px 5px 0px 5px;
+  background-image: url(/images/grand_budapest_copy.jpg);
+  background-position: top;
+}
+
+.navbar-inverse {
+  background-color: #2b0081;
+}
+
+.logo {
+  font-size: 35px;
+  font-family: 'Amatic SC', cursive;
+  color: #fae596;
+}
+
+.review_guest {
+  font-family: 'Amatic SC', cursive;
+  font-size: 35px;
+}
+
+#user_rev {
+  margin: 50px 0px 0px 0px;
+}
+
+#guest_rev {
+  height: 200px;
+}
+
+#user_recent_reviews {
+  text-align: center; 
+  font-family: 'Amatic SC', cursive;
+  font-size: 35px;
+}
+
+#guest_recent {
+  margin: 50px 0px 0px 0px;
+}
+
+.panel-title {
+  font-family: 'Amatic SC', cursive;
+  font-size: 35px;
+}
+
+.panel {
+  background-image: url(/images/marble.jpg);
+  border-radius: 25%;
+}
+
+#live_feed_panel {
+  height: 200px;
+}
+
+#review_panel {
+  margin: 0px 0px 0px 1px;
+  height: 200px;
 }
 
 a {
@@ -11,6 +64,7 @@ a {
 #spacer {
 	height: 10px;
 }
+
 
 .ui-autocomplete {
   position: absolute;

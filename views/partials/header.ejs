@@ -5,7 +5,8 @@
     <link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAASyeAHbF/AAZRIsAaXFsAHDB9wAzVa0An9L3AAYUdgAIDGMAABs5AHR3dAAxXLsAKEdZAJDq/wA1LisAXaDqAMny/wDC+P8AAAAaAH16dAAXQZ0AAABMAAAVbABBYGUAMlxxABxKjAAAGj0ADRp/ABtXkQBiv/8AVGhnAAk8nAAoN3cA4vX/ADFYlgBBkM8AwvD+AChAfwASM60AAAsuAOP4/wCJ1foARE1RAHbB8QAkVr4AUWRrABI3mgALGIYA3u/4ABEdgABdYmAADR2RABU8awBQTEwAdsv3ABc6qwBqYmAAdLvzACg3PwA0NjkAU6XoABQqhgCd8f8ASXqCANH8/wA3PDkAREuTAG2ewQAAAFgA1v//ABQvTwAEFZEATUE7ACBOtgDe//8AAi+CAJTO7wAfVXkAQTg0AOL//wAAGloA6P//AO38/wADOGkAGUB7AJvd/wCU5v8ABAwvAD49egANL6wAUJTYAHqgrABIcqMA/P//ABdQqgARJYYAOXLFAFNThgD///8ARlJgAAsiPACEzPcADiY5ADlgtgBlvv8Aa7n0ABthvQBlj8UA2P3/AIy98AAAAFsAiN7/AB85gAAIPX4AtO//AA4kmwASRq8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFC4AAAAAAAAAAAAAAAAAOVUYAAAAAAAAAAAAAAAAC0wsDQAAAAAAAAAAAAAAQiBuIjMAAAAAAAAAAAArVAE6IxZJAAAAAAAAFApRAwZLUjJrFAAAABRnR18+HHQmVlBDWAAAPDVyL2ZxSGAnIW0lUzsAGx5EbFc3EVkXGkFjXlwUAGQ9agxzKQcSMV1FYkZPAAAAHWkFOFtNPwkINFoTAAAAAABlJHACSipvMC11NgAAAAAAABQoGQ4QYRVoDwAAAAAAAAAAAABJH05ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAD//AAA//gAAP/wAAD/4AAA/4AAAPwAAADgAQAAgAEAAAABAAAAAwAAgAcAAMAHAADgDwAA/B8AAP//AAA=" rel="icon" type="image/x-icon"></link>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
-
+    <link href='https://fonts.googleapis.com/css?family=Amatic+SC:700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
     <link rel='stylesheet' href='/stylesheets/style.css'></link>
 
   </head>
@@ -14,13 +15,13 @@
       <nav class="navbar navbar-inverse header">
         <div class="row container-fluid">
           <div class="navbar-header col-md-2 col-sm-2 col-xs-2">
-            <a style="margin-left: 2%" class="navbar-brand" href="/users">GuestAdvisor</a>
+            <a style="margin-left: 2%; color: #EFCA08" class="logo navbar-brand" href="/users">GuestAdvisor</a>
           </div>
           <div class="navbar-brand col-md-2 col-sm-2 col-xs-2">
             <% if (user) { %>
-              <p style="color: white">Hello <%= user.name %>!</p>
+              <p style="color: #EFCA08; font-family: 'PT Sans Narrow', sans-serif">Hello <%= user.name %>!</p>
             <% } else { %>
-              <p style="color: white">Please Login</p>
+              <p style="color: #EFCA08">Please Login</p>
             <% } %>
           </div>
           <div class="col-md-4 col-sm-4 col-xs-4">
@@ -34,11 +35,11 @@
           <div class="col-md-4 col-sm-4 col-xs-4">
             <ul class="nav navbar-nav navbar-right">
               <% if (user) { %>
-              <li><a href='/users'><span class="glyphicon glyphicon-home"></span> Home</a></li>
-              <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+              <li><a href='/users' style="color: #EFCA08"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+              <li><a href="/logout" style="color: #EFCA08"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
               <% } else { %>
-                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                <li><a href="/new_user"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="/login" style="color: #EFCA08"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="/new_user" style="color: #EFCA08"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
               <% } %>
             </ul>
           </div>
@@ -49,8 +50,8 @@
 
       <!-- LIVE FEED FILLER CONTENT -->
       <div class="col-md-3 col-sm-3 col-xs-3">
-        <div class="panel panel-default">
-          <div class="panel-heading">
+        <div class="panel panel-default" id="live_feed_panel">
+          <div>
             <h2 style="text-align: center" class="panel-title">Live Feed</h2>
           </div>
           <div class="panel-body">
@@ -61,5 +62,6 @@
           </div>
         </div>
       </div>
-      <div class="col-md-5 col-sm-5 col-xs-5">
+      <div class="col-md-1 col-sm-1 col-xs-1">
+      </div>
 
