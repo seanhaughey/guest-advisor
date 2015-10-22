@@ -36,12 +36,10 @@ router.get('/guests', function(req, res) {
 });
 
 router.get('/reviews', function(req, res) {
-  var since = new Date(parseInt(req.query.updateSince));
-  console.log('update', since);
-  Guest.find({reviewed_at: {$gte: since }}, function(err, guests) {
-    res.json(guests);
+  Review.find({}, function(err, reviews) {
+    res.json(reviews);
   });
-});     
+});  
 // apply the routes to our application with the prefix /api
 app.use('/', router);
 module.exports = router;

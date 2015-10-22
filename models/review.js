@@ -3,6 +3,8 @@ var Schema = mongoose.Schema;
 
 var reviewSchema = new Schema({
 	user_ID: { type: String, required: true },
+	userName: {type: String },
+	guestName: {type: String },
 	guest_ID: { type: String, required: true },
 	ind_rating: { type: String, required: true },
 	comment: {type: String, required: true },
