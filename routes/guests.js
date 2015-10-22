@@ -8,9 +8,14 @@ var app = express();
 
 router.get('/:id', function(req, res, next) {
   var id = req.params.id;
-  console.log(id);
-
-  res.render('guest', { user : req.user, guestID : id });
+  Guest.findOne({ _id:req.params.id }, " ", function(err, guests) {
+    if (err) console.log(err);
+    res.render('guest', {
+      title: "Guest Page",
+      guest: guests,
+      user: req.user,
+      guestID : id });
+    });
 });
 
 router.post('/:id', function(req, res, next) {
@@ -63,33 +68,6 @@ app.get('/api/guests', function(req, res) {
       }
    });
 });
-
-
-router.get('/', function(req, res, next) {
-  res.send('hey look guest page');
-});
-
-router.get('/:id', function(req, res, next) {
-   Guest.findOne({ _id:req.params.id }, " ", function(err, guests) {
-  if (err) console.log(err);
-
-  // user.name
-  // user.email
-  // user.favorite 
-res.render('guest', {
-        title: "Guest Page"
-    });
-console.log(guests);
-});
-  
-});
-
-router.param('id', function (req, res, next, id) {
-  console.log('CALLED ONLY ONCE');
-  next();
-})
-
-
 
 app.use('/', router);
 // module.exports = app;
