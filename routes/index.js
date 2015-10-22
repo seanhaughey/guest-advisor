@@ -32,7 +32,7 @@ router.post('/new', function(req, res) {
 
         // Authenticate the new user and redirect to index
         passport.authenticate('local')(req, res, function () {
-            res.redirect('/');
+            res.redirect('/users');
         });
     });
 });

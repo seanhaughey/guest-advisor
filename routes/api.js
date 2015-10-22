@@ -22,20 +22,24 @@ router.get('/users', function(req, res) {
 });   
 
 router.get('/guests', function(req, res) {
-  // var since = new Date(parseInt(req.query.updateSince));
-  // console.log('update', since);
-  // Guest.find({reviewed_at: {$gte: since }}, function(err, guests) {
+  console.log(req.query.term.term);
+  Guest.find({email: new RegExp(req.query.term.term, "i")}, function(err, guests) {
+    
+  console.log(guests);
+  if(err){
+  console.log(err);
+ }
     res.json(guests);
-  //});
+
+   
+  });
 });
 
 router.get('/reviews', function(req, res) {
-  var since = new Date(parseInt(req.query.updateSince));
-  console.log('update', since);
-  Guest.find({reviewed_at: {$gte: since }}, function(err, guests) {
-    res.json(guests);
+  Review.find({}, function(err, reviews) {
+    res.json(reviews);
   });
-});     
+});  
 // apply the routes to our application with the prefix /api
 app.use('/', router);
 module.exports = router;
