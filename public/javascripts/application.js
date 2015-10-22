@@ -52,7 +52,7 @@ $(function () {
    // }
 
    function updateContent() {
-      var updateCheck = 100000;
+      var updateCheck = 3000;
       var rightNow = Date.now();
       var updateSince = rightNow - updateCheck; 
 
@@ -68,7 +68,7 @@ $(function () {
             console.log(data);
          
             for (var i = 0; i < data.length; i++) {
-               $('#live').prepend( "<div> Guest "+ 'you did it' + ", has been reviewed");
+               $('#live').prepend( "<li> Guest "+ 'you did it' + ", has been reviewed</li>");
             }
          }
       });
