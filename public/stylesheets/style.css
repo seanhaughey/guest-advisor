@@ -5,6 +5,13 @@ body {
   background-position: top;
 }
 
+h4 {
+  text-align: center;
+  font-family: 'Amatic SC', cursive;
+  font-size: 25px;
+  padding: 0px;
+}
+
 .navbar-inverse {
   background-color: #2b0081;
 }
@@ -105,6 +112,9 @@ a {
   height: 10px;
 }
 
+.ui-helper-hidden-accessible { 
+  display:none; 
+}
 
 .ui-autocomplete {
   position: absolute;
