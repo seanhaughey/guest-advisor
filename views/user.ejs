@@ -6,8 +6,8 @@
           </div>
           <div class="panel-body">
             <ul style="text-align: center; list-style: none">
-               <% for (i=0; i<reviews.length; i++){ %>
-                 <li><%= reviews[i]['guestName'] %> <br>Review: <%= reviews[i]['comment'] %> | Rating: <%=reviews[i]['ind_rating'] %></li><br><br>
+               <% for (i=reviews.length-1; i>=0; i--){ %>
+                 <li><a href="/guests/<%= reviews[i]['guest_ID']%>"> <%= reviews[i]['guestName'] %> </a> <br>Review: <%= reviews[i]['comment'] %> | Rating: <%=reviews[i]['ind_rating'] %></li><br><br>
         <% } %>
             </ul>
           </div>

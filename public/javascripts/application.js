@@ -52,7 +52,7 @@ $(function () {
    // }
 
    function updateContent() {
-      var updateCheck = 3000;
+      var updateCheck = 700;
       var rightNow = Date.now();
       var updateSince = rightNow - updateCheck; 
 
@@ -66,7 +66,7 @@ $(function () {
          success: function(data, textStatus, jqXHR) {
             // check for duplicates
             for (var i = 0; i < data.length; i++) {
-               $('#live').html( "<li>" + "<a href='/guests/<%=reviews.guest_ID'>"+data[i]['guestName']+ "</a>" + ' was reviewed by ' + "<a href='/users/<%=reviews.user_ID'>" + data[i]['userName'] + "</li>");
+               $('#live').html( "<li><a href='/guests/"+data[i]['guest_ID']+"'>" + data[i]['guestName']+ "</a>" + ' was reviewed by ' + data[i]['userName'] + "</li>");
             }
          }
       });
@@ -74,5 +74,5 @@ $(function () {
     
    }
    //updateContent();
-   setInterval(updateContent, 3000);
+   setInterval(updateContent, 700);
 });
