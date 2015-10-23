@@ -1,4 +1,4 @@
-$(function () {
+  window.onload = function() {
 
 
   $("#search-term").autocomplete({
