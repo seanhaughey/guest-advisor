@@ -15,6 +15,26 @@ body {
   color: #fae596;
 }
 
+#login {
+  height: 200px;
+}
+
+#login_here {
+  text-align: center;
+  font-family: 'Amatic SC', cursive;
+  font-size: 35px;
+}
+
+#sign_up {
+  height: 200px;
+}
+
+#new_user {
+  text-align: center;
+  font-family: 'Amatic SC', cursive;
+  font-size: 35px;  
+}
+
 .review_guest {
   font-family: 'Amatic SC', cursive;
   font-size: 35px;
@@ -22,6 +42,8 @@ body {
 
 #user_rev {
   margin: 50px 0px 0px 0px;
+  height: 300px;
+  overflow: scroll;
 }
 
 #guest_rev {
@@ -36,6 +58,14 @@ body {
 
 #guest_recent {
   margin: 50px 0px 0px 0px;
+  height: 250px;
+  overflow: scroll;
+}
+
+#guest_name {
+  font-family: 'Amatic SC', cursive;
+  font-size: 35px;
+
 }
 
 .panel-title {
