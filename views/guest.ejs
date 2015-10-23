@@ -1,6 +1,6 @@
 <% include ./partials/header %>
 
-<div class="panel panel-default col-md-4 col-sm-4 col-xs-4" id="guest_recent">
+<div class="panel panel-default col-md-4 col-sm-4 col-xs-4" id="guest-panel">
   <div>
     <h2 style="text-align: center" class="panel-title"><%= guest.name %>'s Reviews</h2>
     <h4>Avg Rating 
@@ -11,7 +11,7 @@
         <%= Math.round( (total/reviews.length) * 10) / 10%>
     </h4>
   </div>
-  <div class="panel-body">
+  <div class="panel-body" id="guest_recent">
     <ul style="text-align: center; list-style: none">
      <% for (i=reviews.length-1; i>=0; i--){ %>
      <li>Review: <%= reviews[i]['comment'] %><br> Rating: <%=reviews[i]['ind_rating'] %> | By: <%= reviews[i]['userName'] %> </a> </li><br><br>
