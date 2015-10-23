@@ -12,7 +12,13 @@ var LocalStrategy = require('passport-local').Strategy;
 	router.get('/', function(req, res, next) {
 		var user = req.user
 		if (user) {
-			res.render('user', { user : req.user });
+			Review.find({user_ID: user.id}, " ", function(err, reviews) {
+			    if (err) console.log(err);
+			res.render('user', {
+			      user: req.user,
+			      reviews: reviews
+			    });
+			});
 		}
 		else {
 			res.redirect('/login');

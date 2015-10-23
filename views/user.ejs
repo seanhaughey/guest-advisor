@@ -6,17 +6,10 @@
           </div>
           <div class="panel-body">
             <ul style="text-align: center; list-style: none">
-                <li>stuff</li>
-                <li>stuff</li>
-                <li>stuff</li>
-                <li>stuff</li>
-                <li>stuff</li>
-                <li>stuff</li>
-                <li>stuff</li>
-                <li>stuff</li>
-                <li>stuff</li>
-                <li>stuff</li>
-                <li>stuff</li>
+               <% for (i=0; i<reviews.length; i++){ %>
+                 <li><%= reviews[i]['guestName'] %> <br>Review: <%= reviews[i]['comment'] %> | Rating: <%=reviews[i]['ind_rating'] %></li><br><br>
+        <% } %>
+            </ul>
           </div>
         </div>
     </div>
@@ -36,4 +29,3 @@
             </form>
 <!--         </div>
  -->    </div>
-<% include ./partials/footer %>
