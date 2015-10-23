@@ -42,6 +42,8 @@ body {
 
 #user_rev {
   margin: 50px 0px 0px 0px;
+  height: 300px;
+  overflow: scroll;
 }
 
 #guest_rev {
@@ -69,10 +71,6 @@ body {
 .panel-title {
   font-family: 'Amatic SC', cursive;
   font-size: 35px;
-}
-
-.panel-body {
-  overflow: scroll;
 }
 
 .panel {
