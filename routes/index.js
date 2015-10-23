@@ -46,7 +46,7 @@ router.post('/authenticate', passport.authenticate('local'), function(req, res) 
 // Log out the current user and redirect to index
 router.get('/logout', function(req, res) {
     req.logout();
-    res.redirect('/new_user');
+    res.redirect('/');
 });
 
  module.exports = router;
