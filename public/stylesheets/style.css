@@ -29,6 +29,11 @@ body {
   height: 200px;
 }
 
+#sign-up-link {
+    font-family: 'Amatic SC', cursive;
+    font-size: 25px;
+}
+
 #new_user {
   text-align: center;
   font-family: 'Amatic SC', cursive;
@@ -94,6 +99,10 @@ a {
 
 #spacer {
 	height: 10px;
+}
+
+#sign-up-spacer {
+  height: 10px;
 }
 
 
