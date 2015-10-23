@@ -41,12 +41,13 @@ body {
 }
 
 #user_rev {
-  margin: 50px 0px 0px 0px;
+  margin: 2px 0px 0px 0px;
   height: 300px;
   overflow: scroll;
 }
 
 #guest_rev {
+  margin: 0px 0px 0px 15px;
   height: 200px;
 }
 
@@ -56,9 +57,9 @@ body {
   font-size: 35px;
 }
 
+
 #guest_recent {
-  margin: 50px 0px 0px 0px;
-  height: 250px;
+  height: 300px;
   overflow: scroll;
 }
 

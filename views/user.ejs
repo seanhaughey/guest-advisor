@@ -1,31 +1,29 @@
 <% include ./partials/header %>
-    
-        <div class="panel panel-default col-md-4 col-sm-4 col-xs-4" id="user_rev">
-          <div >
-            <h2 id="user_recent_reviews" class="panel-title"><%= user.name %>'s Recent Reviews</h2>
-          </div>
-          <div class="panel-body">
-            <ul style="text-align: center; list-style: none">
-               <% for (i=0; i<reviews.length; i++){ %>
-                 <li><%= reviews[i]['guestName'] %> <br>Review: <%= reviews[i]['comment'] %> | Rating: <%=reviews[i]['ind_rating'] %></li><br><br>
-        <% } %>
-            </ul>
-          </div>
-        </div>
+  
+<div class="panel panel-default col-md-4 col-sm-4 col-xs-4" id="user_rev">
+    <h2 id="user_recent_reviews" class="panel-title"><%= user.name %>'s Recent Reviews</h2>
+  <div class="panel-body">
+    <ul style="text-align: center; list-style: none">
+       <% for (i=0; i<reviews.length; i++){ %>
+         <li><%= reviews[i]['guestName'] %> <br>Review: <%= reviews[i]['comment'] %> | Rating: <%=reviews[i]['ind_rating'] %></li><br><br>
+<% } %>
+    </ul>
+  </div>
+</div>
     </div>
-    <div class="row panel panel-default col-md-3 col-sm-3 col-xs-3" id="review_panel">
-<!--         <div class="panel-heading"> 
- -->            <form style="text-align: center" action="/users" method="post">
-                <h3 class="review_guest">Review a Guest</h3>
-                <fieldset>
-                    <label for="name">Guest Name:</label>
-                    <input type="text" id="name" name="name" placeholder="Enter guest's name" />
-                    <br />
-                    <label for="email">Guest Email:</label>
-                    <input type="email" id="email" name="email" placeholder="Enter guest's email" /></br>
-                    <div id="spacer" class="row col-md-12 col-sm-12 col-xs-12"></div>
-                    <input type="submit" value="Submit" />
-                </fieldset>
-            </form>
-<!--         </div>
- -->    </div>
+<div class="row panel panel-default col-md-3 col-sm-3 col-xs-3" id="review_panel">
+    <form style="text-align: center" action="/users" method="post">
+        <h3 class="review_guest">Review a Guest</h3>
+        <fieldset>
+            <label for="name">Guest Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter guest's name" />
+            <br />
+            <label for="email">Guest Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter guest's email" /></br>
+            <div id="spacer" class="row col-md-12 col-sm-12 col-xs-12"></div>
+            <input type="submit" value="Submit" />
+        </fieldset>
+    </form>
+</div>
+
+<% include ./partials/footer %>
