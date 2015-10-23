@@ -74,5 +74,5 @@ $(function () {
     
    }
    //updateContent();
-   setInterval(updateContent, 5000);
+   setInterval(updateContent, 3000);
 });

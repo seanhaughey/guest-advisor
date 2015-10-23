@@ -9,15 +9,26 @@ var app = express();
 router.get('/:id', function(req, res, next) {
   var id = req.params.id;
   var guestName = req.params.name;
+  
+  Review.find({guest_ID: id}, " ", function(err, reviews) {
+    console.log(reviews)
+    if (err) console.log(err);
+
+  
+  
+
   Guest.findOne({ _id:req.params.id }, " ", function(err, guests) {
     if (err) console.log(err);
+
     res.render('guest', {
       title: "Guest Page",
       guest: guests,
       user: req.user,
       guestID : id, 
-      guestName: guests.name });
+      guestName: guests.name,
+      reviews: reviews });
     });
+  })
 });
 
 router.post('/:id', function(req, res, next) {

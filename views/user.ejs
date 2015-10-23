@@ -6,16 +6,10 @@
           </div>
           <div class="panel-body">
             <ul style="text-align: center; list-style: none">
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
+               <% for (i=0; i<reviews.length; i++){ %>
+                 <li><a href="/guests/"+<%= reviews[i]['guest_id']%>> <%= reviews[i]['guestName'] %> </a> <br>Review: <%= reviews[i]['comment'] %> | Rating: <%=reviews[i]['ind_rating'] %></li><br><br>
+        <% } %>
+            </ul>
           </div>
         </div>
     </div>

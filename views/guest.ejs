@@ -1,46 +1,39 @@
 <% include ./partials/header %>
 
-        <div class="panel panel-default col-md-4" id="guest_recent">
-          <div>
-            <h2 style="text-align: center" class="panel-title"><%= guest.name %>'s Recent Reviews</h2>
-          </div>
-          <div class="panel-body">
-            <ul style="text-align: center; list-style: none">
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
-              <li>stuff</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    <div class="panel panel-default col-md-3 col-sm-3 col-xs-3" id="guest_rev">
-      <form style="text-align: center" action="/guests/<%= guestID  %>" method="post">
-         <fieldset>
-            <textarea id="guest_id" name="guest_id" style="display:none;" value="<%= guest.id %>"></textarea>
-            
-            <label for="review">Review <%=guest.name%>:</label></br>
-            <input type="hidden" name="guest_name" value="<%=guest.name%>">
+<div class="panel panel-default col-md-4" id="guest_recent">
+  <div>
+    <h2 style="text-align: center" class="panel-title"><%= guest.name %>'s Recent Reviews</h2>
+  </div>
+  <div class="panel-body">
+    <ul id="guest_list" style="text-align: center; list-style: none">
+       <% for (i=0; i<reviews.length; i++){ %>
+          <li>Review: <%= reviews[i]['comment'] %><br> Rating: <%=reviews[i]['ind_rating'] %> | By:<a href="/users/"+<%= reviews[i]['user_id']%>> <%= reviews[i]['userName'] %> </a> </li><br><br>
+        <% } %>
+    </ul>
+  </div>
+</div>
+</div>
+<div class="panel panel-default col-md-3 col-sm-3 col-xs-3" id="guest_rev">
+  <form style="text-align: center" action="/guests/<%= guestID  %>" method="post">
+   <fieldset>
+    <textarea id="guest_id" name="guest_id" style="display:none;" value="<%= guest.id %>"></textarea>
 
-            <textarea id="review" name="review" placeholder="Enter your guest review here"></textarea>
-            <br />
-            <label for="rating">Guest Rating:</label>
-            <select id="rating" name="rating">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select></br>
-            <div id="spacer" class="row col-md-12"></div>
-            <input type="submit" value="Submit" />
-         </fieldset>
-      </form>
+    <label for="review">Review <%=guest.name%>:</label></br>
+    <input type="hidden" name="guest_name" value="<%=guest.name%>">
 
+    <textarea id="review" name="review" placeholder="Enter your guest review here"></textarea>
+    <br />
+    <label for="rating">Guest Rating:</label>
+    <select id="rating" name="rating">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select></br>
+    <div id="spacer" class="row col-md-12"></div>
+    <input type="submit" value="Submit" />
+  </fieldset>
+</form>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <% include ./partials/footer %>
