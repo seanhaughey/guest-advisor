@@ -9,7 +9,8 @@ var app = express();
 router.get('/:id', function(req, res, next) {
   var id = req.params.id;
   var guestName = req.params.name;
-  
+  var user= req.user;
+  if (user){
   Review.find({guest_ID: id}, " ", function(err, reviews) {
     console.log(reviews)
     if (err) console.log(err);
@@ -27,8 +28,12 @@ router.get('/:id', function(req, res, next) {
       guestID : id, 
       guestName: guests.name,
       reviews: reviews });
-    });
-  })
+      });
+    })
+  }
+  else {
+    res.redirect('/login')
+  }
 });
 
 router.post('/:id', function(req, res, next) {
