@@ -66,7 +66,7 @@ $(function () {
          success: function(data, textStatus, jqXHR) {
             // check for duplicates
             for (var i = 0; i < data.length; i++) {
-               $('#live').html( "<li>" + data[i]['guestName'] + ' was reviewed by ' + data[i]['userName'] + "</li>");
+               $('#live').html( "<li>" + "<a href='/guests/<%=reviews.guest_ID'>"+data[i]['guestName']+ "</a>" + ' was reviewed by ' + "<a href='/users/<%=reviews.user_ID'>" + data[i]['userName'] + "</li>");
             }
          }
       });
